@@ -1,31 +1,22 @@
 import React from "react"
-import Title from "./Title"
 import { ContextConsumer } from "../context"
+import Title from "./Title"
+import Product from "./Product"
 
 const ProductList = () => (
-  <div className="ProductList container">
+  <ContextConsumer>
+    { ({ products }) => (
+      <div className="ProductList container">
+        <Title name="our" title="products" />
 
-    <ContextConsumer>
-      { ({ products, onHello }) => (
-        <>
-          <Title name="our" title="products" />
-
-          <ul>
-            { products.map((product, i) => (
-              <li key={ i }>
-                { product.title } 
-              </li>
-            ))}
-          </ul>
-          
-          <br/>
-
-          <button onClick={ onHello }>Hello</button>
-        </> 
-      ) }
-    </ContextConsumer> 
-
-  </div>
+        <div className="row">
+          { products.map((product, i) => 
+            <Product key={ i } { ...product } />
+          ) }
+        </div>
+      </div>
+    ) }
+  </ContextConsumer> 
 )
 
 export default ProductList

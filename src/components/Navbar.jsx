@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="Navbar">
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             <i className="fas fa-phone-square mr-2"></i> 
             <span>E-commerce</span>
           </a>
