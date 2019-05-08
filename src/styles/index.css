@@ -1,0 +1,87 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  font-size: 18px;
+  --mainWhite: #f3f3f3;
+  --mainDark: #333;
+  --mainBlue: rgb(30, 60, 180);
+  --lightBlue: rgb(0, 204, 255);
+  --mainYellow: rgb(255, 239, 91);
+  --fontFamilyOswald: 'Oswald', sans-serif;
+  --fontFamilyPermanentMarker: 'Permanent Marker', cursive;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--mainWhite);
+  color: var(--mainDark);
+  line-height: 2;
+  text-align: left;
+  font-family: var(--fontFamilyOswald);
+}
+
+p {
+  text-align: justify;
+}
+
+a {
+  color: var(--mainDark);
+}
+
+ul {
+  list-style: none;
+}
+
+div.section {
+  padding: 3rem 0;
+}
+
+.text-title {
+  font-family: var(--fontFamilyPermanentMarker);
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.text-blue {
+  color: var(--mainBlue);
+}
+
+.text-light-blue {
+  color: var(--lightBlue);
+}
+
+.Navbar {
+  background: var(--mainBlue);
+  height: 70px;
+  opacity: 0.9;
+}
+
+.Navbar ul {
+  width: 100%;
+  margin: 0;
+  padding-left: 2em;
+}
+
+.Navbar ul li {
+  display: inline;
+}
+
+.Navbar a {
+  color: var(--mainWhite);
+}
+
+.Navbar .home-link {
+  padding: 0 2em;
+  position: relative;
+  top: 11px;
+}
+
+.Navbar .cart-link {
+  float: right;
+}
