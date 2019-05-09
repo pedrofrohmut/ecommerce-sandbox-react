@@ -5,13 +5,13 @@ const Context = React.createContext()
 
 const ContextProvider = (props) => {
 
-  const sayHello = () => (
+  const sayHello = () => {
     console.log("Hello Mth Fkr!")
-  )
+  }
 
   const appState = {
-    products: storeProducts,
-    productDetail: detailProduct,
+    products: [ ...storeProducts ].map(product => ( { ...product } )),
+    productDetail: { ...detailProduct },
     onHello: sayHello
   }
   

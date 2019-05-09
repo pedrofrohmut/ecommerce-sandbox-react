@@ -9,7 +9,7 @@ const ProductList = (props) => {
     <div className="ProductList container">
       <Title name="our" title="products" />
       <div className="row">
-        { products.map( (product, i) => <Product key={ i } { ...product } /> ) }
+        { products.map( (product, i) => <Product key={ i } product={ product } /> ) }
       </div>
     </div>
   )

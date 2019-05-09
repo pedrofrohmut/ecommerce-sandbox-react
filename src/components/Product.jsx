@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const Product = (props) => {
 
-  const { title, img, price, inCart: isInCart } = props
+  const { title, img, price, inCart: isInCart } = props.product
 
   const buttonText = isInCart 
     ? <p className="text-capitalize mb-0">In Cart</p>
@@ -14,7 +15,7 @@ const Product = (props) => {
       <div className="card">
         <main className="card-body">
           <Link to="/details">
-            <img src={ img } alt="product-image"/>
+            <img src={ img } alt=""/>
           </Link>
           <button className="cart-btn" disabled={ isInCart } onClick={ () => { console.log("Added to the cart")} }>
             { buttonText }
@@ -27,6 +28,16 @@ const Product = (props) => {
       </div>
     </ProductWrapper>
   )
+}
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    inCart: PropTypes.bool
+  }).isRequired
 }
 
 const ProductWrapper = styled.div`
