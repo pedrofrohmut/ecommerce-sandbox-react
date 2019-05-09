@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+// TODO: Make a React.Component from this styled component
+
 export const ButtonContainer = styled.button`
   text-transform: captilize;
   font-size: 1.1em;

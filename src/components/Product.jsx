@@ -46,11 +46,11 @@ const ProductWrapper = styled.div`
 
   .card {
     transition: all 0.4s linear;
-    border: 2px solid transparent;
+    border: var(--cardBorder);
 
     &:hover {
-      border: 2px solid rgb(204, 204, 204);
-      box-shadow: 1px 0px 3px 1px rgb(204, 204, 204);
+      border: var(--cardBorderHover);
+      box-shadow: var(--cardShadow);
     }
 
     main {
@@ -77,7 +77,7 @@ const ProductWrapper = styled.div`
         bottom: 0;
         left: 0;
         padding: 0.2em 0.5em 0.2em 0.4em;
-        background-color: rgb(0,204,255);
+        background-color: var(--lightBlue);
         color: #f3f3f3;
         border: 0;
         font-size: 1.6rem;

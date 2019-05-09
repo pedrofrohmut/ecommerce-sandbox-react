@@ -14,6 +14,9 @@
   --mainYellow: rgb(255, 239, 91);
   --fontFamilyOswald: 'Oswald', sans-serif;
   --fontFamilyPermanentMarker: 'Permanent Marker', cursive;
+  --cardBorder: 2px solid transparent;
+  --cardBorderHover: 2px solid rgb(204, 204, 204);
+  --cardShadow: 1px 0px 3px 1px rgb(204, 204, 204);
 }
 
 body {
@@ -54,34 +57,4 @@ div.section {
 
 .text-light-blue {
   color: var(--lightBlue);
-}
-
-.Navbar {
-  background: var(--mainBlue);
-  height: 70px;
-  opacity: 0.9;
-}
-
-.Navbar ul {
-  width: 100%;
-  margin: 0;
-  padding-left: 2em;
-}
-
-.Navbar ul li {
-  display: inline;
-}
-
-.Navbar a {
-  color: var(--mainWhite);
-}
-
-.Navbar .home-link {
-  padding: 0 2em;
-  position: relative;
-  top: 11px;
-}
-
-.Navbar .cart-link {
-  float: right;
 }
