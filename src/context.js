@@ -24,7 +24,14 @@ const ContextProvider = (props) => {
 
 const ContextConsumer = Context.Consumer
 
+const withContext = (WrappedComponent) => () => (
+  <Context.Consumer>
+    { (context) => <WrappedComponent context={ context } /> }
+  </Context.Consumer>
+)
+
 export {
   ContextProvider,
-  ContextConsumer
+  ContextConsumer,
+  withContext
 }

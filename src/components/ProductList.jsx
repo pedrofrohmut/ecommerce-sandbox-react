@@ -1,22 +1,18 @@
 import React from "react"
-import { ContextConsumer } from "../context"
+import { withContext } from "../context.js"
 import Title from "./Title"
 import Product from "./Product"
 
-const ProductList = () => (
-  <ContextConsumer>
-    { ({ products }) => (
-      <div className="ProductList container">
-        <Title name="our" title="products" />
-
-        <div className="row">
-          { products.map((product, i) => 
-            <Product key={ i } { ...product } />
-          ) }
-        </div>
+const ProductList = (props) => {
+  const { products } = props.context
+  return (
+    <div className="ProductList container">
+      <Title name="our" title="products" />
+      <div className="row">
+        { products.map( (product, i) => <Product key={ i } { ...product } /> ) }
       </div>
-    ) }
-  </ContextConsumer> 
-)
+    </div>
+  )
+}
 
-export default ProductList
+export default withContext(ProductList)
