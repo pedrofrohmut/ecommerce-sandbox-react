@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { withRouter } from "react-router-dom"
 import { withContext } from "../context"
 import { Link } from "react-router-dom"
 import Title from "../components/Title"
@@ -7,13 +8,14 @@ import Button from "../components/Button"
 
 const ProductDetails = (props) => {
 
+  const productId = parseInt(props.match.params.id)
+  const productDetail = props.context.onFindProductById(productId)
   const {
     title, img, price, company, info, inCart: isInCart 
-  } = props.context.productDetail
-
+  } = productDetail
+  
   return (
-    <>
-    {/* <ProductDetailsWrapper> */}
+    <ProductDetailsWrapper>
       <div className="container py-5">
         <Title title={ title } className="page-title" /> 
         <div className="row">
@@ -41,8 +43,7 @@ const ProductDetails = (props) => {
           </div>
         </div>
       </div>
-    {/* </ProductDetailsWrapper> */}
-    </>
+    </ProductDetailsWrapper>
   )
 } 
 
@@ -82,4 +83,4 @@ const ProductDetailsWrapper = styled.div`
   }
 ` 
 
-export default withContext(ProductDetails)
+export default withRouter( withContext(ProductDetails) )

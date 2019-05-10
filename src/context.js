@@ -5,13 +5,19 @@ const Context = React.createContext()
 
 const ContextProvider = (props) => {
 
-  const findProductById = (products, productId) => (
-    products.find(product => product.id === productId)
+  const getStoreProductsCopy = () => (
+    [ ...storeProducts ].map(product => ( { ...product } ))
+  )
+
+  const getDetailProductCopy = () => ( { ...detailProduct } )
+
+  const findProductById = (productId) => (
+    getStoreProductsCopy().find(product => product.id === productId)
   )
 
   const appState = {
-    products: [ ...storeProducts ].map(product => ( { ...product } )),
-    productDetail: { ...detailProduct },
+    products: getStoreProductsCopy(),
+    productDetail: getDetailProductCopy(),
     onFindProductById: findProductById
   }
   
@@ -24,15 +30,12 @@ const ContextProvider = (props) => {
 
 const ContextConsumer = Context.Consumer
 
-const withContext = (WrappedComponent) => () => (
+const withContext = (WrappedComponent) => (props) => (
   <Context.Consumer>
-    {
-      (context) => 
-        <WrappedComponent context={ context }/> 
-    }
+    { (context) => <WrappedComponent context={ context } { ...props } /> }
   </Context.Consumer>
-)
-  
+) 
+
 export {
   ContextProvider,
   ContextConsumer,
