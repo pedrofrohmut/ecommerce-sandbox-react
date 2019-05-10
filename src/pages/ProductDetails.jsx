@@ -34,17 +34,13 @@ const ProductDetails = (props) => {
             <div className="info">{ info }</div>
             <div className="buttons-container">
               <Link to="/">
-                <Button>Back to products</Button> 
+                <Button >Back to products</Button> 
               </Link> 
-              <Button 
-                // disabled={ isInCart } 
-                // { isInCart ? "disabled" : "" }
-                disabled={ isInCart }
-                onClick={ () => onAddProductToCart(productId) }
-                mainColor="var(--mainYellow)"
-              >
-                { isInCart ? "Is in the Cart" : "Add to Cart" }
-              </Button>
+              <a onClick={ () => onAddProductToCart(productId) }>
+                <Button  disabled={ isInCart } mainColor="var(--mainYellow)">
+                  { isInCart ? "Is in the Cart" : "Add to Cart" }
+                </Button>
+              </a>
             </div>
           </div>
         </div>

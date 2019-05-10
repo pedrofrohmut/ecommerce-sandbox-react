@@ -21,12 +21,21 @@ const ContextProvider = (props) => {
     getCart().some(product => product.id === productId)
   )
 
+  const addProductToCart = (productId) => {
+    console.log("HELLO WORLD")
+    if (!isInCart(productId)) {
+      getCart().push( findProductById(productId) )
+    }
+    console.log(getCart())
+  }
+
   const appState = {
     products: getStoreProductsCopy(),
     productDetail: getDetailProductCopy(),
     cart: getCart(),
     onFindProductById: findProductById,
-    onIsInCart: isInCart
+    onIsInCart: isInCart,
+    onAddProductToCart: addProductToCart
   }
   
   return (
