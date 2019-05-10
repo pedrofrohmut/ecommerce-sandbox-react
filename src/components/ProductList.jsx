@@ -1,18 +1,33 @@
 import React from "react"
-import { withContext } from "../context.js"
-import Title from "./Title"
+import styled from "styled-components"
 import Product from "./Product"
+import PropTypes from "prop-types"
 
 const ProductList = (props) => {
-  const { products } = props.context
+  const { products } = props
   return (
-    <div className="ProductList container">
-      <Title name="our" title="products" />
+    <ProductListWrapper>
       <div className="row">
-        { products.map( (product, i) => <Product key={ i } product={ product } /> ) }
+        { 
+          products.map((product, i) => 
+            <Product key={ i } product={ product } />) 
+        } 
       </div>
-    </div>
+    </ProductListWrapper>
   )
 }
 
-export default withContext(ProductList)
+ProductList.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      img: PropTypes.string,
+      price: PropTypes.number,
+      inCart: PropTypes.bool
+    }).isRequired
+  ).isRequired
+}
+
+const ProductListWrapper = styled.div``
+
+export default ProductList

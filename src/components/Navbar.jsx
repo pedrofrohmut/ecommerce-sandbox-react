@@ -38,6 +38,7 @@ const NavbarWrapper = styled.nav`
     width: 136px;
     margin-right: 0;
     font-size: 1.5rem;
+    color: var(--mainWhite);
   }
 
   ul {

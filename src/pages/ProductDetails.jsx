@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { withContext } from "../context"
 import { Link } from "react-router-dom"
 import { ButtonContainer } from "../styled-components/Buttons"
-import Title from "./Title";
+import Title from "../components/Title"
 
 const ProductDetails = (props) => {
 

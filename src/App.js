@@ -4,10 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
-import ProductList from "./components/ProductList"
-import ProductDetails from "./components/ProductDetails"
-import Cart from "./components/Cart"
-import PageNotFound from "./components/PageNotFound"
+import ProductHome from "./pages/ProductHome"
+import ProductDetails from "./pages/ProductDetails"
+import Cart from "./pages/Cart"
+import PageNotFound from "./pages/PageNotFound"
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route exact path="/" component={ ProductList } />
+          <Route exact path="/" component={ ProductHome } />
           <Route path="/details" component={ ProductDetails } />
           <Route path="/cart" component={ Cart } />
           <Route component={ PageNotFound } />
