@@ -1,5 +1,5 @@
 import React from "react"
-import { withContext } from "../context.js"
+import { withContext } from "../context/context"
 import styled from "styled-components"
 import Title from "../components/Title"
 import ProductList from "../components/ProductList"

@@ -1,18 +1,22 @@
 import React from "react"
 import styled from "styled-components"
 import { withRouter } from "react-router-dom"
-import { withContext } from "../context"
+import { withContext } from "../context/context"
 import { Link } from "react-router-dom"
 import Title from "../components/Title"
 import Button from "../components/Button"
 
 const ProductDetails = (props) => {
 
+  const { onFindProductById, onAddProductToCart, onIsInCart } = props.context
+
   const productId = parseInt(props.match.params.id)
-  const productDetail = props.context.onFindProductById(productId)
-  const {
-    title, img, price, company, info, inCart: isInCart 
-  } = productDetail
+
+  const productDetail = onFindProductById(productId)
+
+  const { title, img, price, company, info } = productDetail
+
+  const isInCart = onIsInCart(productId)
   
   return (
     <ProductDetailsWrapper>
@@ -20,7 +24,7 @@ const ProductDetails = (props) => {
         <Title title={ title } className="page-title" /> 
         <div className="row">
           <div className="col-md-6">
-            <img src={ img } alt="" className="img-fluid"/>
+            <img src={ "/" + img } alt="" className="img-fluid"/>
           </div>
           <div className="col-md-6">
             <div className="title"><strong>model:</strong> { title }</div> 
@@ -33,8 +37,10 @@ const ProductDetails = (props) => {
                 <Button>Back to products</Button> 
               </Link> 
               <Button 
-                disabled={ isInCart } 
-                onClick={ () => console.log("Hello") }
+                // disabled={ isInCart } 
+                // { isInCart ? "disabled" : "" }
+                disabled={ isInCart }
+                onClick={ () => onAddProductToCart(productId) }
                 mainColor="var(--mainYellow)"
               >
                 { isInCart ? "Is in the Cart" : "Add to Cart" }
@@ -71,6 +77,7 @@ const ProductDetailsWrapper = styled.div`
 
     .info {
       color: var(--lighterDark);
+      text-align: justify;
     }
   }
 

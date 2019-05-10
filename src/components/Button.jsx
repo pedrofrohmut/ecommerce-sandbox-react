@@ -2,10 +2,10 @@ import React from "react"
 import styled from "styled-components"
 
 const Button = (props) => {
-  const { children } = props
+  const { children, disabled } = props
   let mainColor = props.mainColor || "var(--lightBlue)"
   return (
-    <ButtonWrapper className="Button" mainColor={ mainColor }>
+    <ButtonWrapper disabled={ disabled } className="Button" mainColor={ mainColor }>
       { children }
     </ButtonWrapper>
   )
@@ -30,6 +30,16 @@ const ButtonWrapper = styled.button`
     background-color: ${props => props.mainColor };
     border-color: ${props => props.mainColor };
     color: var(--mainWhite);
+  }
+
+  &:disabled {
+    border-color: var(--disabledGrey);
+    color: var(--disabledGrey);
+
+    &:hover {
+      background-color: transparent;
+      cursor: default;
+    }
   }
 `
 

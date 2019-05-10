@@ -1,5 +1,5 @@
 import React from "react"
-import { storeProducts, detailProduct } from "./data"
+import { storeProducts, detailProduct, cart } from "../data/data"
 
 const Context = React.createContext()
 
@@ -11,14 +11,22 @@ const ContextProvider = (props) => {
 
   const getDetailProductCopy = () => ( { ...detailProduct } )
 
+  const getCart = () => cart
+
   const findProductById = (productId) => (
     getStoreProductsCopy().find(product => product.id === productId)
+  )
+
+  const isInCart = (productId) => (
+    getCart().some(product => product.id === productId)
   )
 
   const appState = {
     products: getStoreProductsCopy(),
     productDetail: getDetailProductCopy(),
-    onFindProductById: findProductById
+    cart: getCart(),
+    onFindProductById: findProductById,
+    onIsInCart: isInCart
   }
   
   return (

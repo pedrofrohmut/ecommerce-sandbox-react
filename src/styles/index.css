@@ -7,15 +7,22 @@
 
 :root {
   font-size: 18px;
+
+  /* COLORS */
   --mainWhite: #f3f3f3;
   --mainDark: #333;
   --lighterDark: #666;
+  --disabledGrey: #ccc;
   --mainBlue: rgb(30, 60, 180);
   --lightBlue: rgb(0, 204, 255);
   --mainYellow: rgb(255, 204, 0);
+
+  /* Fixed Props */
   --cardBorder: 2px solid transparent;
   --cardBorderHover: 2px solid rgb(204, 204, 204);
   --cardShadow: 1px 0px 3px 1px rgb(204, 204, 204);
+
+  /* FONTS */
   --fontFamilyOswald: 'Oswald', sans-serif;
   --fontFamilyPermanentMarker: 'Permanent Marker', cursive;
 }
