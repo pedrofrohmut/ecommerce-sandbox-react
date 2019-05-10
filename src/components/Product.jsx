@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 
 const Product = (props) => {
 
-  const { title, img, price, inCart: isInCart } = props.product
+  const { id, title, img, price, inCart: isInCart } = props.product
 
   const buttonText = isInCart 
     ? <p className="text-capitalize mb-0">In Cart</p>
@@ -14,7 +14,7 @@ const Product = (props) => {
     <ProductWrapper className="Product col-sm-9 col-md-6 col-lg-3">
       <div className="card">
         <main className="card-body">
-          <Link to="/details">
+          <Link to={ "/details/" + id }>
             <img src={ img } alt=""/>
           </Link>
           <button className="cart-btn" disabled={ isInCart } onClick={ () => { console.log("Added to the cart")} }>

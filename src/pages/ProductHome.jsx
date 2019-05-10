@@ -14,6 +14,10 @@ const ProductHome = (props) => {
   )
 }
 
-const ProductHomeWrapper = styled.div``
+const ProductHomeWrapper = styled.div`
+  .Title {
+    margin: 1.4em 0 1em;
+  }
+`
 
 export default withContext(ProductHome)

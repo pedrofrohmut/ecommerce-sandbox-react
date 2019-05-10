@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 const ProductList = (props) => {
   const { products } = props
   return (
-    <ProductListWrapper>
+    <ProductListWrapper className="ProductList">
       <div className="row">
         { 
           products.map((product, i) => 

@@ -9,20 +9,21 @@
   font-size: 18px;
   --mainWhite: #f3f3f3;
   --mainDark: #333;
+  --lighterDark: #666;
   --mainBlue: rgb(30, 60, 180);
   --lightBlue: rgb(0, 204, 255);
-  --mainYellow: rgb(255, 239, 91);
-  --fontFamilyOswald: 'Oswald', sans-serif;
-  --fontFamilyPermanentMarker: 'Permanent Marker', cursive;
+  --mainYellow: rgb(255, 204, 0);
   --cardBorder: 2px solid transparent;
   --cardBorderHover: 2px solid rgb(204, 204, 204);
   --cardShadow: 1px 0px 3px 1px rgb(204, 204, 204);
+  --fontFamilyOswald: 'Oswald', sans-serif;
+  --fontFamilyPermanentMarker: 'Permanent Marker', cursive;
 }
 
 body {
   overflow-x: hidden;
   min-height: 100vh;
-  background-color: var(--mainWhite);
+  background-color: var(--mainWhite) !important;
   color: var(--mainDark);
   line-height: 2;
   text-align: left;

@@ -5,14 +5,14 @@ const Context = React.createContext()
 
 const ContextProvider = (props) => {
 
-  const sayHello = () => {
-    console.log("Hello Mth Fkr!")
-  }
+  const findProductById = (products, productId) => (
+    products.find(product => product.id === productId)
+  )
 
   const appState = {
     products: [ ...storeProducts ].map(product => ( { ...product } )),
     productDetail: { ...detailProduct },
-    onHello: sayHello
+    onFindProductById: findProductById
   }
   
   return (
@@ -26,10 +26,13 @@ const ContextConsumer = Context.Consumer
 
 const withContext = (WrappedComponent) => () => (
   <Context.Consumer>
-    { (context) => <WrappedComponent context={ context } /> }
+    {
+      (context) => 
+        <WrappedComponent context={ context }/> 
+    }
   </Context.Consumer>
 )
-
+  
 export {
   ContextProvider,
   ContextConsumer,

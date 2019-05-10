@@ -1,25 +1,27 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
-import { ButtonContainer } from "../styled-components/Buttons"
 import styled from "styled-components"
+import { NavLink } from "react-router-dom"
+import Button from "./Button"
 
 const Navbar = () => {
   return (
-    <NavbarWrapper className="navbar"> 
+    <NavbarWrapper className="Navbar"> 
       <div className="container">
-        <a href="/" className="navbar-brand">
-          <i className="fas fa-phone-square mr-2"></i> 
-          <span>E-commerce</span>
-        </a>
         <ul>
+          <li>
+            <a href="/" className="brand">
+              <i className="fas fa-phone-square mr-2"></i> 
+              <span>E-commerce</span>
+            </a>
+          </li>
           <li>
             <NavLink to="/" className="home-link">HOME</NavLink>
           </li>
           <li>
             <NavLink to="/cart" className="cart-link">
-              <ButtonContainer>
+              <Button>
                 <i className="fas fa-cart-plus mr-3"></i> Cart
-              </ButtonContainer>
+              </Button>
             </NavLink>
           </li>
         </ul>
@@ -30,44 +32,42 @@ const Navbar = () => {
 
 const NavbarWrapper = styled.nav`
   background: var(--mainBlue);
-  height: 70px;
-  opacity: 0.9;
   font-size: 1rem;
 
-  .navbar-brand {
-    width: 136px;
-    margin-right: 0;
-    font-size: 1.5rem;
-    color: var(--mainWhite);
-  }
+  .container {
+    ul {
+      padding: 0.8em 0;
 
-  ul {
-    width: calc(100% - 136px);
-    margin: 0;
-    padding-left: 2em;
+      li {
+        display: inline-block;
+        padding-right: 1em;
 
-    li {
-      display: inline;
+        .brand {
+          font-size: 1.5rem;
+          color: var(--mainWhite);
+        }
 
-      a {
-        color: var(--mainWhite);
-      }
+        a {
+          color: var(--mainWhite);
+        }
 
-      .home-link {
-        padding: 0 2em;
-        position: relative;
-        top: 11px;
-      }
+        .home-link {
+          padding: 0 1em;
+        }
 
-      .cart-link {
-        float: right;
+        .cart-link {
+        }
       }
     }
   }
 
   @media (max-width: 768px) {
-    .navbar-brand {
-      font-size: 1.1rem;
+    .container {
+      font-size: 0.9rem;
+
+      .brand {
+        font-size: 1.2rem;
+      }
     }
   }
 `

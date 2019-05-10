@@ -17,7 +17,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={ ProductHome } />
-          <Route path="/details" component={ ProductDetails } />
+          <Route path="/details/:id" component={ ProductDetails } />
           <Route path="/cart" component={ Cart } />
           <Route component={ PageNotFound } />
         </Switch>
