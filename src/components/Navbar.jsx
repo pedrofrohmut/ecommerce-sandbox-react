@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import Button from "./Button"
 
 const Navbar = () => {
@@ -9,10 +9,10 @@ const Navbar = () => {
       <div className="container">
         <ul>
           <li>
-            <a href="/" className="brand">
+            <Link to="/" className="brand">
               <i className="fas fa-phone-square mr-2"></i> 
               <span>E-commerce</span>
-            </a>
+            </Link>
           </li>
           <li>
             <NavLink to="/" className="home-link">HOME</NavLink>

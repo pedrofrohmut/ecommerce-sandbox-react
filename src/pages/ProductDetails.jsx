@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import { withRouter } from "react-router-dom"
 import { withContext } from "../context/context"
@@ -6,48 +6,60 @@ import { Link } from "react-router-dom"
 import Title from "../components/Title"
 import Button from "../components/Button"
 
-const ProductDetails = (props) => {
+class ProductDetails extends Component {
+  constructor(props) {
+    super(props)
+    const productId = parseInt(this.props.match.params.id)
+    this.state = {
+      isInCart: this.props.context.onIsInCart(productId)
+    }
+    this.handleAddProductToCart = this.handleAddProductToCart.bind(this)
+  }
 
-  const { onFindProductById, onAddProductToCart, onIsInCart } = props.context
-
-  const productId = parseInt(props.match.params.id)
-
-  const productDetail = onFindProductById(productId)
-
-  const { title, img, price, company, info } = productDetail
-
-  const isInCart = onIsInCart(productId)
-  
-  return (
-    <ProductDetailsWrapper>
-      <div className="container py-5">
-        <Title title={ title } className="page-title" /> 
-        <div className="row">
-          <div className="col-md-6">
-            <img src={ "/" + img } alt="" className="img-fluid"/>
-          </div>
-          <div className="col-md-6">
-            <div className="title"><strong>model:</strong> { title }</div> 
-            <div className="company"><strong>Made by:</strong> { company }</div>
-            <div className="price"><strong>Price:</strong> ${ price }</div>
-            <div className="info-title">Some info about the product:</div>
-            <div className="info">{ info }</div>
-            <div className="buttons-container">
-              <Link to="/">
-                <Button >Back to products</Button> 
-              </Link> 
-              <a onClick={ () => onAddProductToCart(productId) }>
-                <Button  disabled={ isInCart } mainColor="var(--mainYellow)">
-                  { isInCart ? "Is in the Cart" : "Add to Cart" }
-                </Button>
-              </a>
+  render() {
+    const { onFindProductById } = this.props.context
+    const productId = parseInt(this.props.match.params.id)
+    const productDetail = onFindProductById(productId)
+    const { title, img, price, company, info } = productDetail
+    const { isInCart } = this.state
+    return (
+      <ProductDetailsWrapper>
+        <div className="container py-5">
+          <Title title={ title } className="page-title" /> 
+          <div className="row">
+            <div className="col-md-6">
+              <img src={ "/" + img } alt="" className="img-fluid"/>
+            </div>
+            <div className="col-md-6">
+              <div className="title"><strong>model:</strong> { title }</div> 
+              <div className="company"><strong>Made by:</strong> { company }</div>
+              <div className="price"><strong>Price:</strong> ${ price }</div>
+              <div className="info-title">Some info about the product:</div>
+              <div className="info">{ info }</div>
+              <div className="buttons-container">
+                <Link to="/">
+                  <Button >Back to products</Button> 
+                </Link> 
+                <a onClick={ () => this.handleAddProductToCart(productId) }>
+                  <Button  disabled={ isInCart } mainColor="var(--mainYellow)">
+                    { isInCart ? "Is in the Cart" : "Add to Cart" }
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </ProductDetailsWrapper>
-  )
-} 
+      </ProductDetailsWrapper>
+    )
+  }
+
+  handleAddProductToCart() {
+    const productId = parseInt(this.props.match.params.id)
+    this.props.context.onAddProductToCart(productId)
+    const isInCart = this.props.context.onIsInCart(productId)
+    this.setState(() => ({ isInCart }))
+  }
+}
 
 const ProductDetailsWrapper = styled.div`
   .Title {
