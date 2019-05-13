@@ -1,5 +1,5 @@
 import React from "react"
-import { storeProducts, detailProduct, cart } from "../data/data"
+import { storeProducts, cart } from "../data/data"
 
 const Context = React.createContext()
 
@@ -8,8 +8,6 @@ const ContextProvider = (props) => {
   const getStoreProductsCopy = () => (
     [ ...storeProducts ].map(product => ( { ...product } ))
   )
-
-  const getDetailProductCopy = () => ( { ...detailProduct } )
 
   const getCart = () => cart
 
@@ -22,16 +20,13 @@ const ContextProvider = (props) => {
   )
 
   const addProductToCart = (productId) => {
-    console.log("HELLO WORLD")
     if (!isInCart(productId)) {
       getCart().push( findProductById(productId) )
     }
-    console.log(getCart())
   }
 
   const appState = {
     products: getStoreProductsCopy(),
-    productDetail: getDetailProductCopy(),
     cart: getCart(),
     onFindProductById: findProductById,
     onIsInCart: isInCart,

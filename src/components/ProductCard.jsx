@@ -1,24 +1,32 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import { withContext } from "../context/context"
+import { Link } from "react-router-dom"
 
 const ProductCard = (props) => {
 
-  const { id, title, img, price, inCart: isInCart } = props.product
+  const { onOpenModal } = props
+  const { onIsInCart } = props.context
+  const { id: productId, title, img, price } = props.product
 
+  const isInCart = onIsInCart(productId)
   const buttonText = isInCart 
-    ? <p className="text-capitalize mb-0">In Cart</p>
+    ? <span className="text-capitalize mb-0">Is In Cart</span>
     : <i className="fas fa-cart-plus"></i>
   return (
     <ProductCardWrapper className="Product col-sm-9 col-md-6 col-lg-3">
       <div className="card">
         <main className="card-body">
-          <Link to={ "/details/" + id }>
+          <Link to={ "/details/" + productId }>
             <img src={ img } alt=""/>
           </Link>
-          <button className="cart-btn" disabled={ isInCart } onClick={ () => { console.log("Added to the cart")} }>
-            { buttonText }
+          <button 
+            className="cart-btn" 
+            disabled={ isInCart } 
+            onClick={ () => { onOpenModal(productId)} }
+          >
+            { buttonText  }
           </button>
         </main>
         <footer className="card-footer d-flex justify-content-between">
@@ -93,4 +101,4 @@ const ProductCardWrapper = styled.div`
   }
 `
 
-export default ProductCard
+export default withContext(ProductCard)

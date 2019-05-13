@@ -4,13 +4,18 @@ import ProductCard from "./ProductCard"
 import PropTypes from "prop-types"
 
 const ProductList = (props) => {
-  const { products } = props
+  const { products, onOpenModal } = props
   return (
     <ProductListWrapper className="ProductList">
       <div className="row">
         { 
           products.map((product, i) => 
-            <ProductCard key={ i } product={ product } />) 
+            <ProductCard 
+              key={ i } 
+              product={ product } 
+              onOpenModal={ onOpenModal } 
+            />
+          ) 
         } 
       </div>
     </ProductListWrapper>
