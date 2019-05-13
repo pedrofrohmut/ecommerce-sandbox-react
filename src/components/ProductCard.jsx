@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 
-const Product = (props) => {
+const ProductCard = (props) => {
 
   const { id, title, img, price, inCart: isInCart } = props.product
 
@@ -11,7 +11,7 @@ const Product = (props) => {
     ? <p className="text-capitalize mb-0">In Cart</p>
     : <i className="fas fa-cart-plus"></i>
   return (
-    <ProductWrapper className="Product col-sm-9 col-md-6 col-lg-3">
+    <ProductCardWrapper className="Product col-sm-9 col-md-6 col-lg-3">
       <div className="card">
         <main className="card-body">
           <Link to={ "/details/" + id }>
@@ -26,11 +26,11 @@ const Product = (props) => {
           <span className="text-blue font-italic mb-0">$ {" "} { price }</span>
         </footer>
       </div>
-    </ProductWrapper>
+    </ProductCardWrapper>
   )
 }
 
-Product.propTypes = {
+ProductCard.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string,
     img: PropTypes.string,
@@ -39,7 +39,7 @@ Product.propTypes = {
   }).isRequired
 }
 
-const ProductWrapper = styled.div`
+const ProductCardWrapper = styled.div`
   padding: 10px;
   font-size: 1rem;
 
@@ -93,4 +93,4 @@ const ProductWrapper = styled.div`
   }
 `
 
-export default Product
+export default ProductCard

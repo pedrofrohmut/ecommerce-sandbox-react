@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Product from "./Product"
+import ProductCard from "./ProductCard"
 import PropTypes from "prop-types"
 
 const ProductList = (props) => {
@@ -10,7 +10,7 @@ const ProductList = (props) => {
       <div className="row">
         { 
           products.map((product, i) => 
-            <Product key={ i } product={ product } />) 
+            <ProductCard key={ i } product={ product } />) 
         } 
       </div>
     </ProductListWrapper>
