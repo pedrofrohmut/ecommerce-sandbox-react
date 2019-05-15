@@ -14,6 +14,17 @@ const ProductCard = (props) => {
   const buttonText = isInCart 
     ? <span className="text-capitalize mb-0">Is In Cart</span>
     : <i className="fas fa-cart-plus"></i>
+
+  const handleAddProductToCart = (productId) => {
+    onOpenModal(productId)
+
+    const action = {
+      type: "ADD_PRODUCT_TO_CART",
+      newProduct: props.context.onFindProductById(productId)
+    }
+    props.context.dispatch(action)
+  }
+
   return (
     <ProductCardWrapper className="Product col-sm-9 col-md-6 col-lg-3">
       <div className="card">
@@ -24,7 +35,7 @@ const ProductCard = (props) => {
           <button 
             className="cart-btn" 
             disabled={ isInCart } 
-            onClick={ () => { onOpenModal(productId)} }
+            onClick={ () => handleAddProductToCart(productId) }
           >
             { buttonText  }
           </button>
