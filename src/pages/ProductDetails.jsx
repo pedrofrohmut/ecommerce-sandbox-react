@@ -9,10 +9,12 @@ import Button from "../components/Button"
 class ProductDetails extends Component {
   constructor(props) {
     super(props)
+
     const productId = parseInt(this.props.match.params.id)
     this.state = {
       isInCart: this.props.context.onIsInCart(productId)
     }
+
     this.handleAddProductToCart = this.handleAddProductToCart.bind(this)
   }
 
@@ -55,9 +57,16 @@ class ProductDetails extends Component {
 
   handleAddProductToCart() {
     const productId = parseInt(this.props.match.params.id)
-    this.props.context.onAddProductToCart(productId)
-    const isInCart = this.props.context.onIsInCart(productId)
-    this.setState(() => ({ isInCart }))
+
+    const action = {
+      type: "ADD_PRODUCT_TO_CART",
+      newProduct: this.props.context.onFindProductById(productId)
+    }
+    this.props.context.dispatch(action)
+
+    this.setState((state, props) => ({ 
+      isInCart: props.context.onIsInCart(productId) 
+    }))
   }
 }
 
@@ -99,3 +108,4 @@ const ProductDetailsWrapper = styled.div`
 ` 
 
 export default withRouter( withContext(ProductDetails) )
+

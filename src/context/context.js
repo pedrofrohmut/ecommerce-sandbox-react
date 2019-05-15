@@ -1,43 +1,63 @@
-import React from "react"
-import { storeProducts, cart } from "../data/data"
+import React, { Component } from "react"
+import { storeProducts, storeCart } from "../data/data"
 
 const Context = React.createContext()
 
-const ContextProvider = (props) => {
+const reducer = (prevState, action) => {
+  const newState = {
+    products: [ ...prevState.products ].map(product => ( { ...product } ) ),
+    cart: [ ...prevState.cart ].map(product => ( { ...product } ) )
+  }
 
-  const getStoreProductsCopy = () => (
-    [ ...storeProducts ].map(product => ( { ...product } ))
-  )
+  switch (action.type) {
+    case "ADD_PRODUCT_TO_CART":
+      newState.cart.push(action.newProduct)
+      return newState
+    default:
+      return prevState
+  }
+}
 
-  const getCart = () => cart
+class ContextProvider extends Component {
+  constructor(props) {
+    super(props)
 
-  const findProductById = (productId) => (
-    getStoreProductsCopy().find(product => product.id === productId)
-  )
+    const products = [ ...storeProducts ].map(product => ( { ...product } ) )
 
-  const isInCart = (productId) => (
-    getCart().some(product => product.id === productId)
-  )
+    const cart = [ ...storeCart ].map(product => ( { ...product } ) ) 
 
-  const addProductToCart = (productId) => {
-    if (!isInCart(productId)) {
-      getCart().push( findProductById(productId) )
+    const dispatch = (action) => this.setState( 
+      (state) => reducer(state, action)
+    )
+
+    this.state = {
+      products,
+      cart,
+      dispatch
     }
   }
 
-  const appState = {
-    products: getStoreProductsCopy(),
-    cart: getCart(),
-    onFindProductById: findProductById,
-    onIsInCart: isInCart,
-    onAddProductToCart: addProductToCart
+  render() {
+    const onFindProductById = (productId) => (
+      this.state.products.find(product => product.id === productId)
+    )
+
+    const onIsInCart = (productId) => (
+      this.state.cart.some(product => product.id === productId)
+    )
+
+    return (
+      <Context.Provider 
+        value={{
+          ...this.state,
+          onFindProductById,
+          onIsInCart
+        }}
+      >
+        { this.props.children }
+      </Context.Provider>
+    )
   }
-  
-  return (
-    <Context.Provider value={ appState }>
-      { props.children }
-    </Context.Provider>
-  )
 }
 
 const ContextConsumer = Context.Consumer

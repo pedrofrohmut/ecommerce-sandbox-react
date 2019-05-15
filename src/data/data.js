@@ -115,7 +115,7 @@ export const detailProduct = {
   total: 0
 }
 
-export const cart = [
+export const storeCart = [
   {
     id: 4,
     title: "HTC 10 - White",
