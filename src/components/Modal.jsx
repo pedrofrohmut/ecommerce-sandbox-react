@@ -13,10 +13,7 @@ const Modal = (props) => {
   }
 
   return (
-    <ModalWrapper>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-6 mx-auto">
+    <ModalWrapper className="container-fluid">
 
             <div className="modal-card card mx-auto">
               <main className="card-body">
@@ -38,16 +35,11 @@ const Modal = (props) => {
               </footer>
             </div>
 
-          </div>
-        </div>
-      </div>
     </ModalWrapper>
   )
 }
 
 const ModalWrapper = styled.div`
-
-  border: 1px dashed red; /* Test Guide */
 
   position: fixed;
   top: 0;
