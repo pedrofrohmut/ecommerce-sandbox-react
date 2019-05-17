@@ -21,6 +21,7 @@
   --mainBlue: rgb(30, 60, 180);
   --lightBlue: rgb(0, 204, 255);
   --mainYellow: rgb(255, 204, 0);
+  --lighterOrange: rgb(255, 204, 102);
 
   /* Fixed Props */
   --cardBorder: 2px solid transparent;

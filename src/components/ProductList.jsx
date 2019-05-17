@@ -10,11 +10,13 @@ const ProductList = (props) => {
       <div className="row">
         { 
           products.map((product, i) => 
-            <ProductCard 
-              key={ i } 
-              product={ product } 
-              onOpenModal={ onOpenModal } 
-            />
+            <div className="col-sm-9 col-md-6 col-lg-3">
+              <ProductCard 
+                key={ i } 
+                product={ product } 
+                onOpenModal={ onOpenModal } 
+              />
+            </div>
           ) 
         } 
       </div>

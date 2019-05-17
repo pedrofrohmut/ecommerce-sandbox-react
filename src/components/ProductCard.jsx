@@ -26,7 +26,7 @@ const ProductCard = (props) => {
   }
 
   return (
-    <ProductCardWrapper className="Product col-sm-9 col-md-6 col-lg-3">
+    <ProductCardWrapper className="ProductCard">
       <div className="card">
         <main className="card-body">
           <Link to={ "/details/" + productId }>
@@ -40,9 +40,9 @@ const ProductCard = (props) => {
             { buttonText  }
           </button>
         </main>
-        <footer className="card-footer d-flex justify-content-between">
-          <span className="align-self-center mb-0">{ title }</span>
-          <span className="text-blue font-italic mb-0">$ {" "} { price }</span>
+        <footer className="card-footer">
+          <div className="footer-title">{ title }</div>
+          <div className="footer-price">Price: ${ price }</div>
         </footer>
       </div>
     </ProductCardWrapper>
@@ -100,7 +100,7 @@ const ProductCardWrapper = styled.div`
         border: 0;
         font-size: 1.6rem;
         border-radius: 0 0.9rem 0 0;
-        transform: translate(-100%, 0);
+        transform: translate(-110%, 0);
         cursor: pointer;
       }
     }
@@ -108,6 +108,19 @@ const ProductCardWrapper = styled.div`
     footer {
       background: transparent;
       border-top: transparent;
+
+      div {
+        text-align: center;
+        width: 100%;
+      }
+
+      .footer-title {
+        font-size: 1.1rem;
+      }
+
+      .footer-price {
+        color: var(--lighterDark2);
+      }
     }
   }
 `
