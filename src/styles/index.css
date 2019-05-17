@@ -31,6 +31,7 @@
   /* FONTS */
   --fontFamilyOswald: 'Oswald', sans-serif;
   --fontFamilyPermanentMarker: 'Permanent Marker', cursive;
+  --fontFamilyRoboto: 'Roboto', sans-serif;
 }
 
 body {
@@ -60,7 +61,7 @@ div.section {
 }
 
 .text-title {
-  font-family: var(--fontFamilyPermanentMarker);
+  font-family: var(--fontFamilyRoboto);
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }

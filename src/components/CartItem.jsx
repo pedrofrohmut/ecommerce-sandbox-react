@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 import ProductCard from "./ProductCard"
 
 const CartItem = (props) => {
@@ -23,37 +24,47 @@ const CartItem = (props) => {
     total: 20
   }
 //##########################################################################
-  const { product, quantity, total } = cartItem // testing! (change source after)
+  const { quantity, total } = cartItem // testing! (change source after)
+  const { id: productId, img, title, price } = cartItem.product
 
   return (
     <CartItemWrapper className="CartItem">
-      {/* Card */}
-      <ProductCard product={ product } />
+      <div className="card">
+        <main>
+          <Link to={ "/details/" + productId }>
+            <img src={ img } alt=""/>
+          </Link>
+        </main>
+        <footer>
+          {/* Title */}
+          <div className="footer-title">{ title }</div>
 
-      <div className="price-and-total-container">
-        {/* Price */}
-        <div className="cart-price">Price: ${ product.price }</div>
+          <div className="price-and-total-container">
+            {/* Price */}
+            <div className="cart-price">Price: ${ price }</div>
 
-        {/* Total */}
-        <div className="cart-item-total">Total: ${ total }</div>
-      </div>
+            {/* Total */}
+            <div className="cart-item-total">Total: ${ total }</div>
+          </div>
 
-      <div className="quantity-and-trash-container">
-        {/* Quantity Control */}
-        <div className="quantity-control">
-          <a>
-            <i class="fas fa-minus-square"></i>
-          </a>
-          <span>{" " + quantity + " "}</span>
-          <a>
-            <i class="fas fa-plus-square"></i>
-          </a>
-        </div>
+          <div className="quantity-and-trash-container">
+            {/* Quantity Control */}
+            <div className="quantity-control">
+              <a>
+                <i class="fas fa-minus-square"></i>
+              </a>
+              <span>{" " + quantity + " "}</span>
+              <a>
+                <i class="fas fa-plus-square"></i>
+              </a>
+            </div>
 
-        {/* Trash Can */}
-        <div className="trash">
-          <i class="fas fa-trash-alt"></i>
-        </div>
+            {/* Trash Can */}
+            <div className="trash">
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          </div>
+        </footer>
       </div>
     </CartItemWrapper>
   )
@@ -62,61 +73,69 @@ const CartItem = (props) => {
 const CartItemWrapper = styled.div`
   background: #fff;
   padding: 10px 15px 20px;
+  font-size: 1rem;
 
-  .ProductCard {
-    padding: 0;
+  .card {
+    border: 1px solid transparent;
 
-    .card-footer {
+    main {
+      margin-bottom: 6px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    footer {
       .footer-title {
-        font-weight: 600;
-      }
-
-      .footer-price {
-        display: none;
-      }
-    }
-  }
-
-  .price-and-total-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 15px 5px;
-
-    .cart-item-total,
-    .cart-price {
-      color: var(--lighterDark2);
-    }
-  }
-
-  .quantity-and-trash-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px;
-
-    .quantity-control {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 110px;
-
-      a {
         text-align: center;
-        padding: 0;
-        font-size: 1.7rem;
-        color: var(--lighterDark3);
+        font-weight: 500;
+        font-size: 1.1.rem;
+        margin-bottom: 6px;
       }
 
-      span {
-        padding: 0 12px;
-        font-size: 1.2rem;
-      }
-    }
+      .price-and-total-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 15px 5px;
 
-    .trash {
-      font-size: 1.4rem;
-      color: var(--lighterOrange);
+        .cart-item-total,
+        .cart-price {
+          color: var(--lighterDark2);
+        }
+      }
+
+      .quantity-and-trash-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 15px;
+
+        .quantity-control {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 110px;
+
+          a {
+            text-align: center;
+            padding: 0;
+            font-size: 1.7rem;
+            color: var(--lighterDark3);
+          }
+
+          span {
+            padding: 0 12px;
+            font-size: 1.2rem;
+          }
+        }
+
+        .trash {
+          font-size: 1.4rem;
+          color: var(--lighterOrange);
+        }
+      }
     }
   }
 `

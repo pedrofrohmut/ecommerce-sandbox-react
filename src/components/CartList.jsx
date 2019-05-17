@@ -6,13 +6,12 @@ const CartList = (props) => {
   const { items } = props
   return (
     <CartListWrapper>
-      <h1>Hello From Cart List</h1>
       { items && (
         <>
           <div className="row">
             { 
               items.map((item, i) => 
-                <div className="col-sm-9 col-md-6 col-lg-3">
+                <div className="col-sm-122 col-md-6 col-lg-4 mb-4">
                   <CartItem 
                     key={ i } 
                     item={ item } 
